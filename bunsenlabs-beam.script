@@ -1,8 +1,11 @@
+#  Copyright (C) 2018 Vinzenz Vietzke
+#  derived from tuxedo-logo.script
+#
 #  Copyright (C) 2017 TUXEDO Computers GmbH
-#  derived from budgie-logo-scale-2.script
+#  derived from budgie-logo.script
 #  
 #  Copyright (C) 2016 HEXcube and David Mohammed
-#  derived from ubuntu-mate-logo-scale-2.script - boot splash plugin
+#  derived from ubuntu-mate-logo.script - boot splash plugin
 # 
 #  Copyright (C) 2014 Ubuntu MATE Developers
 #  Copyright (C) 2009 Canonical Ltd.
@@ -54,27 +57,12 @@ debugsprite = Sprite();
 debugsprite_bottom = Sprite();
 debugsprite_medium = Sprite();
 
-# Ubuntu Font
-ubuntufont = "Ubuntu 11";
-ubuntualignment = "center";
-
-# Scale factor
-scalefactor = 2;
-
-# are we currently prompting for a password?
+# Are we currently prompting for a password?
 prompt_active = 0;
-
-# Generic scalable image loader
-fun LoadScaleImage (imagepath) {
-    image = Image (imagepath);
-    image = image.Scale (image.GetWidth() * scalefactor, image.GetHeight() * scalefactor);
-    return image;
-}
 
 # General purpose function to create text
 fun WriteText (text, colour) {
-    image = Image.Text (text, colour.red, colour.green, colour.blue, color.alpha, ubuntufont, ubuntualignment);
-    image = image.Scale (image.GetWidth() * scalefactor, image.GetHeight() * scalefactor);
+    image = Image.Text (text, colour.red, colour.green, colour.blue);
     return image;
 }
 
@@ -189,27 +177,27 @@ fun StringToInteger (str) {
 # New background colour
 # #2c001e --> 0.16, 0.00, 0.12
 #
-# Color for TUXEDO
-# #212121 -->  0.129, 0.129, 0.129
-Window.SetBackgroundTopColor (0.129, 0.129, 0.129);     # Nice colour on top of the screen fading to
-Window.SetBackgroundBottomColor (0.129, 0.129, 0.129);  # an equally nice colour on the bottom
+# Color for BunsenLabs
+# #333333 -->  0.20, 0.20, 0.20
+Window.SetBackgroundTopColor (0.20, 0.20, 0.20);
+Window.SetBackgroundBottomColor (0.20, 0.20, 0.20);
 
 bits_per_pixel = Window.GetBitsPerPixel ();
 if (bits_per_pixel == 4) {
-    logo_filename = "tuxedo-logo16@2.png";
-    progress_dot_off_filename = "progress_dot_off16@2.png";
-    progress_dot_on_filename = "progress_dot_on16@2.png";
+    logo_filename = "bunsenlabs-logo16.png";
+    progress_dot_off_filename = "progress_dot_off16.png";
+    progress_dot_on_filename = "progress_dot_on16.png";
     password_field_filename = "password_field16.png";
     question_field_filename = "password_field16.png";
 } else {
-    logo_filename = "tuxedo-logo@2.png";
-    progress_dot_off_filename = "progress_dot_off@2.png";
-    progress_dot_on_filename = "progress_dot_on@2.png";
+    logo_filename = "bunsenlabs-logo.png";
+    progress_dot_off_filename = "progress_dot_off.png";
+    progress_dot_on_filename = "progress_dot_on.png";
     password_field_filename = "password_field.png";
     question_field_filename = "password_field.png";
 }
 
-logo.image = LoadScaleImage (logo_filename);
+logo.image = Image (logo_filename);
 logo.sprite = Sprite ();
 logo.sprite.SetImage (logo.image);
 logo.width = logo.image.GetWidth ();
@@ -231,8 +219,8 @@ fsck_notification.image = ImageToActionText ("");
 
 status = "normal";
 
-progress_indicator.bullet_off = LoadScaleImage (progress_dot_off_filename);
-progress_indicator.bullet_on = LoadScaleImage (progress_dot_on_filename);
+progress_indicator.bullet_off = Image (progress_dot_off_filename);
+progress_indicator.bullet_on = Image (progress_dot_on_filename);
 progress_indicator.bullet_width = progress_indicator.bullet_off.GetWidth ();
 progress_indicator.bullet_height = progress_indicator.bullet_off.GetHeight ();
 progress_indicator.bullet_hspacing = progress_indicator.bullet_width * 1.1;
@@ -540,8 +528,9 @@ fun password_dialogue_setup (message_label) {
     
     local.entry;
     local.bullet_image;
-    bullet_image = LoadScaleImage (progress_dot_off_filename);
-    entry.image = LoadScaleImage (password_field_filename);
+    
+    bullet_image = Image (progress_dot_off_filename);
+    entry.image = Image (password_field_filename);
     
     # Hide the normal labels
     prompt_active = 1;
@@ -1057,9 +1046,9 @@ fun question_dialogue_setup (message_label, text_image) {
     local.content;
     local.margin;
     
-    field.image = LoadScaleImage (question_field_filename);
+    field.image = Image (question_field_filename);
     content = Sprite ();    
-    bullet_image = LoadScaleImage (progress_dot_off_filename);
+    bullet_image = Image (progress_dot_off_filename);
     margin = bullet_image.GetWidth() / 2;
     
     # Hide the normal labels
