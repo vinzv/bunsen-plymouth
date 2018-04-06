@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=BunsenLabs
+Description=A theme that features the BunsenLabs logo on a blank dark background.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/bunsenlabs
+ScriptFile=/usr/share/plymouth/themes/bunsenlabs/bunsenlabs.script

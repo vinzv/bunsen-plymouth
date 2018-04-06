@@ -1,5 +1,5 @@
 # bunsen-plymouth
-BunsenLabs Beam plymouth theme
+BunsenLabs plymouth theme
 
 ## Screenshot
 ![Screenshot BunsenLabs Beam](https://raw.github.com/vinzv/bunsen-plymouth/master/screenshot.png?raw=true "Screenshot BunsenLabs Beam")
@@ -7,8 +7,8 @@ BunsenLabs Beam plymouth theme
 ## How to use
 
 * ``cd /usr/share/plymouth/themes/``
-* ``sudo git clone https://github.com/vinzv/bunsen-plymouth-one.git bunsenlabs-beam``
-* ``sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/bunsenlabs-beam/bunsenlabs-beam.plymouth 100``
+* ``sudo git clone https://github.com/vinzv/bunsen-plymouth-one.git bunsenlabs``
+* ``sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/bunsenlabs/bunsenlabs.plymouth 100``
 * ``sudo update-alternatives --config default.plymouth``
 * ``sudo update-initramfs -u -k all``
 
